@@ -5,9 +5,10 @@ function Sidebar() {
     <div className="sidebar">
       <h2>Crewmates</h2>
       <nav>
-        <ul>
-          <li><Link to="/">Summary</Link></li>
-          <li><Link to="/create">Create</Link></li>
+        <ul className="nav-links">
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/summary">Crewmate Gallery</Link></li>
+            <li><Link to="/create">Create a New Crewmate</Link></li>
         </ul>
       </nav>
     </div>
