@@ -40,52 +40,56 @@ function Create() {
     setLoading(false);
   };
 
-  return (
-    <div>
-      <h2>Create a Crewmate</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Name:</label><br />
-          <input 
-            type="text" 
-            name="name" 
-            value={formData.name}
-            onChange={handleChange} 
-            required
-          />
-        </div>
-        <div>
-          <label>Role:</label><br />
-          <input 
-            type="text" 
-            name="role" 
-            value={formData.role}
-            onChange={handleChange} 
-            required
-          />
-        </div>
-        <div>
-          <label>Color:</label><br />
-          <input 
-            type="text" 
-            name="color" 
-            value={formData.color}
-            onChange={handleChange} 
-            required
-          />
-        </div>
-        <button type="submit" disabled={loading}>
-          {loading ? 'Saving...' : 'Create'}
-        </button>
-      </form>
+    return (
+        <div className="create-container">
+            <h2 className="create-heading">Create a New Crewmate</h2>
+            <form className="create-form" onSubmit={handleSubmit}>
+            <div className="form-group">
+                <label>Name:</label><br />
+                <input 
+                className="form-input"
+                type="text" 
+                name="name" 
+                value={formData.name}
+                onChange={handleChange} 
+                required
+                />
+            </div>
+            <div className="form-group">
+                <label>Role:</label><br />
+                <input 
+                className="form-input"
+                type="text" 
+                name="role" 
+                value={formData.role}
+                onChange={handleChange} 
+                required
+                />
+            </div>
+            <div className="form-group">
+                <label>Color:</label><br />
+                <input 
+                className="form-input"
+                type="text" 
+                name="color" 
+                value={formData.color}
+                onChange={handleChange} 
+                required
+                />
+            </div>
+            <button className="form-button" type="submit" disabled={loading}>
+                {loading ? 'Saving...' : 'Create'}
+            </button>
+            </form>
 
-      {message && (
-        <p style={{ color: message.type === 'error' ? 'red' : 'green' }}>
-          {message.text}
-        </p>
-      )}
-    </div>
-  );
+            {message && (
+            <p className={`form-message ${message.type === 'error' ? 'error' : 'success'}`}>
+                {message.text}
+            </p>
+            )}
+        </div>
+    );
+
 }
 
 export default Create;

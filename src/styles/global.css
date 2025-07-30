@@ -28,3 +28,62 @@ body {
 
 
 
+.create-container {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 2rem;
+  background-color: #f7f7f7;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.create-heading {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.create-form .form-group {
+  margin-bottom: 1rem;
+}
+
+.form-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #bbb;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.form-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #5a67d8;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.form-button:hover {
+  background-color: #434190;
+}
+
+.form-message {
+  margin-top: 1rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+.form-message.error {
+  color: red;
+}
+
+.form-message.success {
+  color: green;
+}
+
+
