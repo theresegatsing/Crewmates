@@ -2,7 +2,7 @@
 
 Submitted by: **Therese Elvira Mombou Gatsing**
 
-This web app: **insert description**
+This web app: **This app lets you create, edit, and view fun profiles for your crewmates. Add details like name, color, and role, and manage your crewmate gallery with ease!**
 
 Time spent: **7** hours spent in total
 
