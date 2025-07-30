@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 //import Edit from './Edit';
 import supabase from '../supabase';
 import { useNavigate } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 function Summary() {
   const [crewmates, setCrewmates] = useState([]);
@@ -37,7 +38,7 @@ function Summary() {
   return (
     <div>
       <h2>Your Crewmate Gallery!</h2>
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', justifycontent: 'center' }}>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', justifyContent: 'center' }}>
         {crewmates.map((mate) => (
           <div
             key={mate.id}
@@ -55,9 +56,12 @@ function Summary() {
               fontWeight: 'bold',
             }}
           >
-            <p>Name: {mate.name}</p>
-            <p>Role: {mate.role}</p>
-            <p>Color: {mate.color}</p>
+            <Link to={`/crewmate/${mate.id}`} key={mate.id} style={{ textDecoration: 'none', color: 'inherit' }}>
+
+                <p>Name: {mate.name}</p>
+                <p>Role: {mate.role}</p>
+                <p>Color: {mate.color}</p>
+            </Link>
             <button type='button' onClick={() => navigate(`/edit/${mate.id}`)}> Edit crewmate</button>
           </div>
         ))}
