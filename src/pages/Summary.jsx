@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import Edit from './Edit';
+//import Edit from './Edit';
 import supabase from '../supabase';
 import { useNavigate } from 'react-router-dom';
 
