@@ -1,9 +1,12 @@
 import { useEffect, useState } from 'react';
+import Edit from './Edit';
 import supabase from '../supabase';
+import { useNavigate } from 'react-router-dom';
 
 function Summary() {
   const [crewmates, setCrewmates] = useState([]);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   // Function to generate a random light color
   const getRandomLightColor = () => {
@@ -55,6 +58,7 @@ function Summary() {
             <p>Name: {mate.name}</p>
             <p>Role: {mate.role}</p>
             <p>Color: {mate.color}</p>
+            <button type='button' onClick={() => navigate(`/edit/${mate.id}`)}> Edit crewmate</button>
           </div>
         ))}
       </div>
