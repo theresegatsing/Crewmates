@@ -5,42 +5,59 @@ function Summary() {
   const [crewmates, setCrewmates] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  // Function to generate a random light color
+  const getRandomLightColor = () => {
+    const colors = ['#d0f0fd', '#fde2e4', '#e2f0cb', '#fdf1d1', '#e0eafc', '#fce1f0'];
+    return colors[Math.floor(Math.random() * colors.length)];
+  };
+
   useEffect(() => {
     const fetchCrewmates = async () => {
-      setLoading(true);
       const { data, error } = await supabase
         .from('crewmates')
-        .select('*')
+        .select()
         .order('created_at', { ascending: false });
 
       if (error) {
-        console.error('Error fetching crewmates:', error.message);
+        console.error(error);
       } else {
         setCrewmates(data);
       }
-
       setLoading(false);
     };
 
     fetchCrewmates();
   }, []);
 
+  if (loading) return <p>Loading crewmates...</p>;
+
   return (
-    <div className="summary-container">
-      <h2>Crewmate Summary</h2>
-      {loading ? (
-        <p>Loading crewmates...</p>
-      ) : (
-        <ul className="crewmate-list">
-          {crewmates.map((mate) => (
-            <li key={mate.id} className="crewmate-card" style={{ borderColor: mate.color }}>
-              <p><strong>Name:</strong> {mate.name}</p>
-              <p><strong>Role:</strong> {mate.role}</p>
-              <p><strong>Color:</strong> {mate.color}</p>
-            </li>
-          ))}
-        </ul>
-      )}
+    <div>
+      <h2>Your Crewmate Gallery!</h2>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px' }}>
+        {crewmates.map((mate) => (
+          <div
+            key={mate.id}
+            style={{
+              backgroundColor: getRandomLightColor(),
+              padding: '16px',
+              borderRadius: '10px',
+              boxShadow: '0 2px 5px rgba(0,0,0,0.1)',
+              width: '200px',
+              height: '150px',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center',
+              fontWeight: 'bold',
+            }}
+          >
+            <p>Name: {mate.name}</p>
+            <p>Role: {mate.role}</p>
+            <p>Color: {mate.color}</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
