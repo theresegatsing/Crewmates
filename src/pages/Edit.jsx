@@ -50,6 +50,24 @@ function Edit() {
     navigate('/summary');
   }
 
+ async function handleDelete(e) {
+    e.preventDefault();
+    const confirmDelete = window.confirm('Are you sure you want to delete this crewmate?');
+    if (!confirmDelete) return;
+
+    const { error } = await supabase
+      .from('crewmates')
+      .delete()
+      .eq('id', id);
+
+    if (error) {
+      console.error("Error deleting crewmate:", error.message);
+      return;
+    }
+
+    navigate('/summary');
+  }
+
   if (loading) return <p>Loading...</p>;
   if (!crewmate) return <p>Crewmate not found.</p>;
 
@@ -87,7 +105,8 @@ function Edit() {
             placeholder="Color"
             required
         />
-        <button type="submit">Save Changes</button>
+        <button type="submit" style = {{backgroundColor: 'lightgreen'}}>Save Changes</button>
+        <button type = "button" onClick = {handleDelete} style = {{backgroundColor:'#ff4d4f', color: 'white', border: 'none', padding: '10px 16px', borderRadius:'8px', marginTop: '20px', cursor:'pointer'}}> Delete crewmate </button>
         </form>
     </div>
   );
