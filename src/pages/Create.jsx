@@ -1,7 +1,7 @@
 function Create() {
   return (
     <div>
-      <h2>Create Crewmate</h2>
+      <h2>Create a new crewmate</h2>
       {/* form goes here */}
     </div>
   );
