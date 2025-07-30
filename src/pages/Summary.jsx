@@ -37,7 +37,7 @@ function Summary() {
   return (
     <div>
       <h2>Your Crewmate Gallery!</h2>
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px' }}>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', justifycontent: 'center' }}>
         {crewmates.map((mate) => (
           <div
             key={mate.id}
